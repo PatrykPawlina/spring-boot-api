@@ -1,4 +1,4 @@
-package com.java.springbootapplication;
+package com.java.springbootapplication.dao.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
