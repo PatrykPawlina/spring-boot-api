@@ -25,23 +25,38 @@ public class CarApi {
     }
 
     @GetMapping
-    public Optional<Car> getCarById(@RequestParam Long index) {
+    public Optional<Car> getCarByIdWithParam(@RequestParam Long index) {
         return carManager.findCarById(index);
     }
 
     @GetMapping("/id/{index}")
-    public Optional<Car> getCarByID(@PathVariable("index") Long index) {
+    public Optional<Car> getCarById(@PathVariable("index") Long index) {
         return carManager.findCarById(index);
     }
 
+    @GetMapping("/brands")
+    public List<Car> findCarsByBrandWithParam(@RequestParam String brand) {
+        return carManager.findCarsByCarBrand(brand);
+    }
+
     @GetMapping("/brands/{brand}")
-    public List<Car> findCarsByCarBrand(@PathVariable("brand") String carBrand) {
+    public List<Car> findCarsByBrand(@PathVariable("brand") String carBrand) {
         return carManager.findCarsByCarBrand(carBrand);
+    }
+
+    @GetMapping("/models")
+    public List<Car> findCarsByModelWithParam(@RequestParam String model) {
+        return carManager.findCarsByModel(model);
     }
 
     @GetMapping("/models/{model}")
     public List<Car> findCarsByModel(@PathVariable("model") String carModel) {
         return carManager.findCarsByModel(carModel);
+    }
+
+    @GetMapping("/age")
+    public List<Car> findCarsByAgeWithParam(@RequestParam Integer age) {
+        return carManager.findCarsByAge(age);
     }
 
     @GetMapping("/age/{age}")
