@@ -1,7 +1,7 @@
 package com.java.springbootapplication.manager;
 
-import com.java.springbootapplication.dao.repo.CarRepo;
 import com.java.springbootapplication.dao.entity.Car;
+import com.java.springbootapplication.dao.repo.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -27,12 +27,24 @@ public class CarManager {
         return carRepo.findById(id);
     }
 
+    public Long countCars() {
+        return carRepo.count();
+    }
+
+    public Boolean isCarExists(Long id) {
+        return carRepo.existsById(id);
+    }
+
     public Car saveCar(Car car) {
         return carRepo.save(car);
     }
 
     public void deleteCarById(Long id) {
         carRepo.deleteById(id);
+    }
+
+    public void deleteAll() {
+        carRepo.deleteAll();
     }
 
     @EventListener(ApplicationReadyEvent.class)

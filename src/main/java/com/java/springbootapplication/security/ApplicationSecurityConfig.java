@@ -15,23 +15,31 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2A);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin")
+        auth
+                .inMemoryAuthentication()
+                .withUser("patryk")
                 .password(passwordEncoder().encode("1234"))
-                .roles("admin");
+                .roles("ADMIN");
+        auth
+                .inMemoryAuthentication()
+                .withUser("user")
+                .password(passwordEncoder().encode("user"))
+                .roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/cars/**").hasRole("admin")
+                .antMatchers("/cars/*").hasAnyRole("ADMIN", "USER")
                 .and()
-                .formLogin();
+                .httpBasic()
+                .and()
+                .csrf().disable();
     }
 }

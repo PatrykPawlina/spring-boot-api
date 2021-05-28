@@ -13,12 +13,12 @@ public class Car {
     private Long id;
     private String carBrand;
     private String model;
-    private int age;
+    private Integer age;
 
     public Car() {
     }
 
-    public Car(Long id, String carBrand, String model, int age) {
+    public Car(Long id, String carBrand, String model, Integer age) {
         this.id = id;
         this.carBrand = carBrand;
         this.model = model;
@@ -49,11 +49,11 @@ public class Car {
         this.model = model;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
