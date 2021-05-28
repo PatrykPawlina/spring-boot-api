@@ -64,6 +64,13 @@ public class CarApi {
         return carManager.findCarsByAge(carAge);
     }
 
+    @GetMapping("params")
+    public List<Car> findCardByBrandModelOrAge(@RequestParam(required = false) String brand,
+                                               @RequestParam(required = false) String model,
+                                               @RequestParam(required = false) Integer age) {
+        return carManager.findCarsByBrandOrModelOrAge(brand, model, age);
+    }
+
     @GetMapping("/amount")
     public Long countCars() {
         return carManager.countCars();

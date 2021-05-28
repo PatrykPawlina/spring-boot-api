@@ -40,6 +40,10 @@ public class CarManager {
         return carRepo.findCarsByAge(carAge);
     }
 
+    public List<Car> findCarsByBrandOrModelOrAge(String carBrand, String carModel, Integer carAge) {
+        return carRepo.findCarsByCarBrandOrModelOrAge(carBrand, carModel, carAge);
+    }
+
     public Long countCars() {
         return carRepo.count();
     }

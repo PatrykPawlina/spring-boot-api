@@ -14,4 +14,6 @@ public interface CarRepo extends CrudRepository<Car, Long> {
     List<Car> findCarsByModel(String carModel);
 
     List<Car> findCarsByAge(Integer carAge);
+
+    List<Car> findCarsByCarBrandOrModelOrAge(String carBrand, String carModel, Integer ageCar);
 }
