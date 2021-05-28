@@ -5,10 +5,11 @@ import com.java.springbootapplication.manager.CarManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping("/api/cars")
 public class CarApi {
 
     private CarManager carManager;
@@ -28,9 +29,24 @@ public class CarApi {
         return carManager.findCarById(index);
     }
 
-    @GetMapping("id/{index}")
+    @GetMapping("/id/{index}")
     public Optional<Car> getCarByID(@PathVariable("index") Long index) {
         return carManager.findCarById(index);
+    }
+
+    @GetMapping("/brands/{brand}")
+    public List<Car> findCarsByCarBrand(@PathVariable("brand") String carBrand) {
+        return carManager.findCarsByCarBrand(carBrand);
+    }
+
+    @GetMapping("/models/{model}")
+    public List<Car> findCarsByModel(@PathVariable("model") String carModel) {
+        return carManager.findCarsByModel(carModel);
+    }
+
+    @GetMapping("/age/{age}")
+    public List<Car> findCarsByAge(@PathVariable("age") Integer carAge) {
+        return carManager.findCarsByAge(carAge);
     }
 
     @GetMapping("/amount")
@@ -63,7 +79,7 @@ public class CarApi {
         carManager.deleteCarById(index);
     }
 
-    @DeleteMapping("clear")
+    @DeleteMapping("/clear")
     public void deleteCars() {
         carManager.deleteAll();
     }

@@ -7,6 +7,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +26,18 @@ public class CarManager {
 
     public Optional<Car> findCarById(Long id) {
         return carRepo.findById(id);
+    }
+
+    public List<Car> findCarsByCarBrand(String carBrand) {
+        return carRepo.findCarsByCarBrand(carBrand);
+    }
+
+    public List<Car> findCarsByModel(String carModel) {
+        return carRepo.findCarsByModel(carModel);
+    }
+
+    public List<Car> findCarsByAge(Integer carAge) {
+        return carRepo.findCarsByAge(carAge);
     }
 
     public Long countCars() {
