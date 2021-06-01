@@ -11,7 +11,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String carBrand;
+    private String brand;
     private String model;
     private Integer age;
 
@@ -20,7 +20,7 @@ public class Car {
 
     public Car(Long id, String carBrand, String model, Integer age) {
         this.id = id;
-        this.carBrand = carBrand;
+        this.brand = carBrand;
         this.model = model;
         this.age = age;
     }
@@ -34,11 +34,11 @@ public class Car {
     }
 
     public String getCarBrand() {
-        return carBrand;
+        return brand;
     }
 
     public void setCarBrand(String carBrand) {
-        this.carBrand = carBrand;
+        this.brand = carBrand;
     }
 
     public String getModel() {
@@ -61,7 +61,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", carBrand='" + carBrand + '\'' +
+                ", carBrand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", age='" + age + '\'' +
                 '}';

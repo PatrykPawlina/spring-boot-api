@@ -28,24 +28,36 @@ public class CarManager {
         return carRepo.findById(id);
     }
 
-    public List<Car> findCarsByCarBrand(String carBrand) {
-        return carRepo.findCarsByCarBrand(carBrand);
+    public List<Car> findCarsByBrand(String brand) {
+        return carRepo.findCarsByBrand(brand);
     }
 
-    public List<Car> findCarsByModel(String carModel) {
-        return carRepo.findCarsByModel(carModel);
+    public List<Car> findCarsByModel(String model) {
+        return carRepo.findCarsByModel(model);
     }
 
-    public List<Car> findCarsByAge(Integer carAge) {
-        return carRepo.findCarsByAge(carAge);
+    public List<Car> findCarsByAge(Integer age) {
+        return carRepo.findCarsByAge(age);
     }
 
-    public List<Car> findCarsByBrandOrModelOrAge(String carBrand, String carModel, Integer carAge) {
-        return carRepo.findCarsByCarBrandOrModelOrAge(carBrand, carModel, carAge);
+    public List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age) {
+        return carRepo.findCarsByBrandOrModelOrAge(brand, model, age);
     }
 
     public Long countCars() {
         return carRepo.count();
+    }
+
+    public Long countCarsByBrand(String brand) {
+        return carRepo.countCarByBrand(brand);
+    }
+
+    public Long countCarsByModel(String model) {
+        return carRepo.countCarByModel(model);
+    }
+
+    public Long countCarsByAge(Integer age) {
+        return carRepo.countCarByAge(age);
     }
 
     public Boolean isCarExists(Long id) {

@@ -24,7 +24,7 @@ public class CarApi {
         return carManager.findAllCars();
     }
 
-    @GetMapping
+    @GetMapping("/id")
     public Optional<Car> getCarByIdWithParam(@RequestParam Long index) {
         return carManager.findCarById(index);
     }
@@ -36,12 +36,12 @@ public class CarApi {
 
     @GetMapping("/brands")
     public List<Car> findCarsByBrandWithParam(@RequestParam String brand) {
-        return carManager.findCarsByCarBrand(brand);
+        return carManager.findCarsByBrand(brand);
     }
 
     @GetMapping("/brands/{brand}")
-    public List<Car> findCarsByBrand(@PathVariable("brand") String carBrand) {
-        return carManager.findCarsByCarBrand(carBrand);
+    public List<Car> findCarsByBrand(@PathVariable("brand") String brand) {
+        return carManager.findCarsByBrand(brand);
     }
 
     @GetMapping("/models")
@@ -50,8 +50,8 @@ public class CarApi {
     }
 
     @GetMapping("/models/{model}")
-    public List<Car> findCarsByModel(@PathVariable("model") String carModel) {
-        return carManager.findCarsByModel(carModel);
+    public List<Car> findCarsByModel(@PathVariable("model") String model) {
+        return carManager.findCarsByModel(model);
     }
 
     @GetMapping("/age")
@@ -60,20 +60,50 @@ public class CarApi {
     }
 
     @GetMapping("/age/{age}")
-    public List<Car> findCarsByAge(@PathVariable("age") Integer carAge) {
-        return carManager.findCarsByAge(carAge);
+    public List<Car> findCarsByAge(@PathVariable("age") Integer age) {
+        return carManager.findCarsByAge(age);
     }
 
-    @GetMapping("params")
+    @GetMapping("/params")
     public List<Car> findCardByBrandModelOrAge(@RequestParam(required = false) String brand,
                                                @RequestParam(required = false) String model,
                                                @RequestParam(required = false) Integer age) {
         return carManager.findCarsByBrandOrModelOrAge(brand, model, age);
     }
 
-    @GetMapping("/amount")
+    @GetMapping("/amounts")
     public Long countCars() {
         return carManager.countCars();
+    }
+
+    @GetMapping("/amounts/brands")
+    public Long countCarsByBrandWithParam(@RequestParam String brand) {
+        return carManager.countCarsByBrand(brand);
+    }
+
+    @GetMapping("/amounts/brands/{brand}")
+    public Long countCarsByBrand(@PathVariable("brand") String brand) {
+        return carManager.countCarsByBrand(brand);
+    }
+
+    @GetMapping("/amounts/models")
+    public Long countCarsByModelWithParam(@RequestParam String model) {
+        return carManager.countCarsByModel(model);
+    }
+
+    @GetMapping("/amounts/models/{model}")
+    public Long countCarsByModel(@PathVariable("model") String model) {
+        return carManager.countCarsByModel(model);
+    }
+
+    @GetMapping("/amounts/age")
+    public Long countCarsByAgeWithParam(@RequestParam Integer age) {
+        return carManager.countCarsByAge(age);
+    }
+
+    @GetMapping("/amounts/age/{age}")
+    public Long countCarsByAge(@PathVariable("age") Integer age) {
+        return carManager.countCarsByAge(age);
     }
 
     @GetMapping("/exists/{index}")

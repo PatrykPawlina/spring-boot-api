@@ -9,11 +9,17 @@ import java.util.List;
 @Repository
 public interface CarRepo extends CrudRepository<Car, Long> {
 
-    List<Car> findCarsByCarBrand(String carBrand);
+    List<Car> findCarsByBrand(String brand);
 
-    List<Car> findCarsByModel(String carModel);
+    List<Car> findCarsByModel(String model);
 
-    List<Car> findCarsByAge(Integer carAge);
+    List<Car> findCarsByAge(Integer age);
 
-    List<Car> findCarsByCarBrandOrModelOrAge(String carBrand, String carModel, Integer ageCar);
+    List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age);
+
+    Long countCarByBrand(String brand);
+
+    Long countCarByModel(String model);
+
+    Long countCarByAge(Integer age);
 }
