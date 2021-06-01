@@ -22,4 +22,11 @@ public interface CarRepo extends CrudRepository<Car, Long> {
     Long countCarByModel(String model);
 
     Long countCarByAge(Integer age);
+
+    Boolean existsCarByBrand(String brand);
+
+    Boolean existsCarByModel(String model);
+
+    Boolean existsCarByAge(Integer age);
+
 }

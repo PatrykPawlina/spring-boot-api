@@ -106,9 +106,44 @@ public class CarApi {
         return carManager.countCarsByAge(age);
     }
 
-    @GetMapping("/exists/{index}")
-    public Boolean isCarExists(@PathVariable("index") Long index) {
-        return carManager.isCarExists(index);
+    @GetMapping("/exists")
+    public Boolean isCarExistsByIdWithParam(@RequestParam Long index) {
+        return carManager.isCarExistsById(index);
+    }
+
+    @GetMapping("/exists/index/{index}")
+    public Boolean isCarExistsById(@PathVariable("index") Long index) {
+        return carManager.isCarExistsById(index);
+    }
+
+    @GetMapping("/exists/brands")
+    public Boolean isCarExistsByBrandWithParam(@RequestParam String brand) {
+        return carManager.isCarExistsByBrand(brand);
+    }
+
+    @GetMapping("/exists/brands/{brand}")
+    public Boolean isCarExistsByBrand(@PathVariable("brand") String brand) {
+        return carManager.isCarExistsByBrand(brand);
+    }
+
+    @GetMapping("/exists/models")
+    public Boolean isCarExistsByModelWithParam(@RequestParam String model) {
+        return carManager.isCarExistsByModel(model);
+    }
+
+    @GetMapping("/exists/models/{model}")
+    public Boolean isCarExistsByModel(@PathVariable("model") String model) {
+        return carManager.isCarExistsByModel(model);
+    }
+
+    @GetMapping("/exists/age")
+    public Boolean isCarExistsByAgeWithPara(@RequestParam Integer age) {
+        return carManager.isCarExistsByAge(age);
+    }
+
+    @GetMapping("/exists/age/{age}")
+    public Boolean isCarExistsByAge(@PathVariable("age") Integer age) {
+        return carManager.isCarExistsByAge(age);
     }
 
     @PostMapping

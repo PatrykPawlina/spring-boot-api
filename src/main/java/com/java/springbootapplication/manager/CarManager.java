@@ -60,8 +60,20 @@ public class CarManager {
         return carRepo.countCarByAge(age);
     }
 
-    public Boolean isCarExists(Long id) {
+    public Boolean isCarExistsById(Long id) {
         return carRepo.existsById(id);
+    }
+
+    public Boolean isCarExistsByBrand(String brand) {
+        return carRepo.existsCarByBrand(brand);
+    }
+
+    public Boolean isCarExistsByModel(String model) {
+        return carRepo.existsCarByModel(model);
+    }
+
+    public Boolean isCarExistsByAge(Integer age) {
+        return carRepo.existsCarByAge(age);
     }
 
     public Car saveCar(Car car) {
