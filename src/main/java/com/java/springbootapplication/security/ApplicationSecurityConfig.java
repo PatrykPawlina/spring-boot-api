@@ -1,21 +1,25 @@
 package com.java.springbootapplication.security;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import static com.java.springbootapplication.security.ApplicationUserRole.ADMIN;
+import static com.java.springbootapplication.security.ApplicationUserRole.USER;
 
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2A);
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public ApplicationSecurityConfig(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -23,20 +27,21 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("patryk")
-                .password(passwordEncoder().encode("1234"))
-                .roles("ADMIN");
+                .password(passwordEncoder.encode("1234"))
+                .roles(ADMIN.name());
         auth
                 .inMemoryAuthentication()
                 .withUser("user")
-                .password(passwordEncoder().encode("user"))
-                .roles("USER");
+                .password(passwordEncoder.encode("user"))
+                .roles(USER.name());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/cars/*").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/", "index", "css/*", "/js/*").permitAll()
+                .antMatchers("/api/cars/**").authenticated()
                 .and()
                 .httpBasic()
                 .and()
