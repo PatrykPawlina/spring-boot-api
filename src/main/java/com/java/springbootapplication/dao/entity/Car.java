@@ -1,9 +1,6 @@
 package com.java.springbootapplication.dao.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Car {
@@ -18,9 +15,9 @@ public class Car {
     public Car() {
     }
 
-    public Car(Long id, String carBrand, String model, Integer age) {
+    public Car(Long id, String brand, String model, Integer age) {
         this.id = id;
-        this.brand = carBrand;
+        this.brand = brand;
         this.model = model;
         this.age = age;
     }
@@ -33,12 +30,12 @@ public class Car {
         this.id = id;
     }
 
-    public String getCarBrand() {
+    public String getBrand() {
         return brand;
     }
 
-    public void setCarBrand(String carBrand) {
-        this.brand = carBrand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
@@ -61,7 +58,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", carBrand='" + brand + '\'' +
+                ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", age='" + age + '\'' +
                 '}';

@@ -1,4 +1,4 @@
-package com.java.springbootapplication.dao.repo;
+package com.java.springbootapplication.dao.repository;
 
 import com.java.springbootapplication.dao.entity.Car;
 import org.springframework.data.repository.CrudRepository;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CarRepo extends CrudRepository<Car, Long> {
+public interface CarRepository extends CrudRepository<Car, Long> {
 
     List<Car> findCarsByBrand(String brand);
 
@@ -28,5 +28,4 @@ public interface CarRepo extends CrudRepository<Car, Long> {
     Boolean existsCarByModel(String model);
 
     Boolean existsCarByAge(Integer age);
-
 }

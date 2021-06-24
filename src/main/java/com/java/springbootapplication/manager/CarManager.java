@@ -1,7 +1,7 @@
 package com.java.springbootapplication.manager;
 
 import com.java.springbootapplication.dao.entity.Car;
-import com.java.springbootapplication.dao.repo.CarRepo;
+import com.java.springbootapplication.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -13,79 +13,79 @@ import java.util.Optional;
 @Service
 public class CarManager {
 
-    private CarRepo carRepo;
+    private CarRepository carRepository;
 
     @Autowired
-    public CarManager(CarRepo carRepo) {
-        this.carRepo = carRepo;
+    public CarManager(CarRepository carRepository) {
+        this.carRepository = carRepository;
     }
 
     public Iterable<Car> findAllCars() {
-        return carRepo.findAll();
+        return carRepository.findAll();
     }
 
     public Optional<Car> findCarById(Long id) {
-        return carRepo.findById(id);
+        return carRepository.findById(id);
     }
 
     public List<Car> findCarsByBrand(String brand) {
-        return carRepo.findCarsByBrand(brand);
+        return carRepository.findCarsByBrand(brand);
     }
 
     public List<Car> findCarsByModel(String model) {
-        return carRepo.findCarsByModel(model);
+        return carRepository.findCarsByModel(model);
     }
 
     public List<Car> findCarsByAge(Integer age) {
-        return carRepo.findCarsByAge(age);
+        return carRepository.findCarsByAge(age);
     }
 
     public List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age) {
-        return carRepo.findCarsByBrandOrModelOrAge(brand, model, age);
+        return carRepository.findCarsByBrandOrModelOrAge(brand, model, age);
     }
 
     public Long countCars() {
-        return carRepo.count();
+        return carRepository.count();
     }
 
     public Long countCarsByBrand(String brand) {
-        return carRepo.countCarByBrand(brand);
+        return carRepository.countCarByBrand(brand);
     }
 
     public Long countCarsByModel(String model) {
-        return carRepo.countCarByModel(model);
+        return carRepository.countCarByModel(model);
     }
 
     public Long countCarsByAge(Integer age) {
-        return carRepo.countCarByAge(age);
+        return carRepository.countCarByAge(age);
     }
 
     public Boolean isCarExistsById(Long id) {
-        return carRepo.existsById(id);
+        return carRepository.existsById(id);
     }
 
     public Boolean isCarExistsByBrand(String brand) {
-        return carRepo.existsCarByBrand(brand);
+        return carRepository.existsCarByBrand(brand);
     }
 
     public Boolean isCarExistsByModel(String model) {
-        return carRepo.existsCarByModel(model);
+        return carRepository.existsCarByModel(model);
     }
 
     public Boolean isCarExistsByAge(Integer age) {
-        return carRepo.existsCarByAge(age);
+        return carRepository.existsCarByAge(age);
     }
 
     public Car saveCar(Car car) {
-        return carRepo.save(car);
+        return carRepository.save(car);
     }
 
     public void deleteCarById(Long id) {
-        carRepo.deleteById(id);
+        carRepository.deleteById(id);
     }
 
     public void deleteAll() {
-        carRepo.deleteAll();
+        carRepository.deleteAll();
     }
 
     @EventListener(ApplicationReadyEvent.class)

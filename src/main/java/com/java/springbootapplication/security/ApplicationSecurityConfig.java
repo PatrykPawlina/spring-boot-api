@@ -41,10 +41,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "index", "css/*", "/js/*").permitAll()
-                .antMatchers("/api/cars/**").authenticated()
+                .antMatchers("/api/cars/**", "/h2-console/**").authenticated()
                 .and()
                 .httpBasic()
                 .and()
                 .csrf().disable();
+        http
+                .headers().frameOptions().disable();
     }
 }
