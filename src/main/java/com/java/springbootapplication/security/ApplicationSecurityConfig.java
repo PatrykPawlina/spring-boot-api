@@ -2,6 +2,7 @@ package com.java.springbootapplication.security;
 
 import com.java.springbootapplication.auth.ApplicationUserService;
 import com.java.springbootapplication.jwt.JwtAuthenticationFilter;
+import com.java.springbootapplication.jwt.JwtTokenVerifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +39,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilterAfter(new JwtTokenVerifier(), JwtAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/", "index", "css/*", "/js/*").permitAll()
                 .antMatchers("h2-console/**").hasRole(ADMIN.name())
