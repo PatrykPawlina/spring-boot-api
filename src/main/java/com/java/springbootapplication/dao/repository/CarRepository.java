@@ -33,7 +33,13 @@ public interface CarRepository extends CrudRepository<Car, Long> {
 
     List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age);
 
+    @Query("SELECT c FROM Car c WHERE c.brand=?1 OR c.model=?2 OR c.age=?3")
+    List<Car> findCarsByBrandOrModelOrAgeWithQuery(String brand, String model, Integer age);
+
     Long countCarByBrand(String brand);
+
+    @Query("SELECT count(c) FROM Car c WHERE c.brand=?1")
+    Long countCarByBrandWithQuery(String brand);
 
     Long countCarByModel(String model);
 

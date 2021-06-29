@@ -65,12 +65,20 @@ public class CarManager {
         return carRepository.findCarsByBrandOrModelOrAge(brand, model, age);
     }
 
+    public List<Car> findCarsByBrandOrModelOrAgeWithQuery(String brand, String model, Integer age) {
+        return carRepository.findCarsByBrandOrModelOrAgeWithQuery(brand, model, age);
+    }
+
     public Long countCars() {
         return carRepository.count();
     }
 
     public Long countCarsByBrand(String brand) {
         return carRepository.countCarByBrand(brand);
+    }
+
+    public Long countCarsByBrandWithQuery(String brand) {
+        return carRepository.countCarByBrandWithQuery(brand);
     }
 
     public Long countCarsByModel(String model) {

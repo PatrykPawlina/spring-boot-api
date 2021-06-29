@@ -96,6 +96,13 @@ public class CarApi {
         return carManager.findCarsByBrandOrModelOrAge(brand, model, age);
     }
 
+    @GetMapping("/params/query")
+    public List<Car> findCardByBrandModelOrAgeWithQuery(@RequestParam(required = false) String brand,
+                                               @RequestParam(required = false) String model,
+                                               @RequestParam(required = false) Integer age) {
+        return carManager.findCarsByBrandOrModelOrAgeWithQuery(brand, model, age);
+    }
+
     @GetMapping("/amounts")
     public Long countCars() {
         return carManager.countCars();
@@ -104,6 +111,11 @@ public class CarApi {
     @GetMapping("/amounts/brands")
     public Long countCarsByBrandWithParam(@RequestParam String brand) {
         return carManager.countCarsByBrand(brand);
+    }
+
+    @GetMapping("/amounts/brands/query")
+    public Long countCarsByBrandWithParamWithQuery(@RequestParam String brand) {
+        return carManager.countCarsByBrandWithQuery(brand);
     }
 
     @GetMapping("/amounts/brands/{brand}")
