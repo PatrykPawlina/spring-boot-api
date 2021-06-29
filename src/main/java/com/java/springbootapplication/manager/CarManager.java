@@ -5,6 +5,7 @@ import com.java.springbootapplication.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,12 +33,32 @@ public class CarManager {
         return carRepository.findCarsByBrand(brand);
     }
 
+    public List<Car> findCarsByBrandWithQueryLike(String brand) {
+        return carRepository.findCarsByBrandWithQueryLike(brand);
+    }
+
+    public List<Car> findCarsByBrandWithQuery(String brand) {
+        return carRepository.findCarsByBrandWithQuery(brand);
+    }
+
     public List<Car> findCarsByModel(String model) {
         return carRepository.findCarsByModel(model);
     }
 
+    public List<Car> findCarsByModelWithQueryLike(String model) {
+        return carRepository.findCarsByModelWithQueryLike(model);
+    }
+
+    public List<Car> findCarsByModelWithQuery(String model) {
+        return carRepository.findCarsByModelWithQuery(model);
+    }
+
     public List<Car> findCarsByAge(Integer age) {
         return carRepository.findCarsByAge(age);
+    }
+
+    public List<Car> findCarsByAgeWithQuery(Integer age) {
+        return carRepository.findCarsByAgeWithQuery(age);
     }
 
     public List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age) {
@@ -94,5 +115,9 @@ public class CarManager {
         saveCar(new Car(2L, "Mazda", "CX30", 3));
         saveCar(new Car(3L, "Toyota", "Yaris", 5));
         saveCar(new Car(4L, "Suzuki", "Swift", 7));
+        saveCar(new Car(5L, "Volvo", "XC90", 12));
+        saveCar(new Car(6L, "BMW", "M3", 9));
+        saveCar(new Car(7L, "Subaru", "Forester", 8));
+        saveCar(new Car(8L, "Peugeot", "2008", 4));
     }
 }

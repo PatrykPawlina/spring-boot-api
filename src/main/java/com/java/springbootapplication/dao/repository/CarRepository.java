@@ -1,6 +1,7 @@
 package com.java.springbootapplication.dao.repository;
 
 import com.java.springbootapplication.dao.entity.Car;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,9 +12,24 @@ public interface CarRepository extends CrudRepository<Car, Long> {
 
     List<Car> findCarsByBrand(String brand);
 
+    @Query("SELECT c FROM Car c WHERE c.brand LIKE '%ss%'")
+    List<Car> findCarsByBrandWithQueryLike(String brand);
+
+    @Query("SELECT c FROM Car c WHERE c.brand=?1")
+    List<Car> findCarsByBrandWithQuery(String brand);
+
     List<Car> findCarsByModel(String model);
 
+    @Query("SELECT c FROM Car c WHERE c.model LIKE '%Yar%'")
+    List<Car> findCarsByModelWithQueryLike(String model);
+
+    @Query("SELECT c FROM Car c WHERE c.model=?1")
+    List<Car> findCarsByModelWithQuery(String model);
+
     List<Car> findCarsByAge(Integer age);
+
+    @Query("SELECT c FROM Car c WHERE c.age BETWEEN 5 AND 10")
+    List<Car> findCarsByAgeWithQuery(Integer age);
 
     List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age);
 

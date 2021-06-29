@@ -44,6 +44,16 @@ public class CarApi {
         return carManager.findCarsByBrand(brand);
     }
 
+    @GetMapping("/brands/query/like")
+    public List<Car> findCarsByBrandWithQueryLike(String brand){
+        return carManager.findCarsByBrandWithQueryLike(brand);
+    }
+
+    @GetMapping("/brands/query")
+    public List<Car> findCarsByBrandWithQuery(@RequestParam String brand){
+        return carManager.findCarsByBrandWithQuery(brand);
+    }
+
     @GetMapping("/models")
     public List<Car> findCarsByModelWithParam(@RequestParam String model) {
         return carManager.findCarsByModel(model);
@@ -54,9 +64,24 @@ public class CarApi {
         return carManager.findCarsByModel(model);
     }
 
+    @GetMapping("/models/query/like")
+    public List<Car> findCarsByModelWithQueryLike(String model) {
+        return carManager.findCarsByModelWithQueryLike(model);
+    }
+
+    @GetMapping("/models/query")
+    public List<Car> findCarsByModelWithQuery(@RequestParam String model) {
+        return carManager.findCarsByModelWithQuery(model);
+    }
+
     @GetMapping("/age")
     public List<Car> findCarsByAgeWithParam(@RequestParam Integer age) {
         return carManager.findCarsByAge(age);
+    }
+
+    @GetMapping("/age/query")
+    public List<Car> findCarsByAgeWithParamWithQuery(Integer age) {
+        return carManager.findCarsByAgeWithQuery(age);
     }
 
     @GetMapping("/age/{age}")
