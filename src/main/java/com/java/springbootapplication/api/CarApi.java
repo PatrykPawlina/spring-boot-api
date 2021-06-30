@@ -45,12 +45,12 @@ public class CarApi {
     }
 
     @GetMapping("/brands/query/like")
-    public List<Car> findCarsByBrandWithQueryLike(String brand){
+    public List<Car> findCarsByBrandWithQueryLike(String brand) {
         return carManager.findCarsByBrandWithQueryLike(brand);
     }
 
     @GetMapping("/brands/query")
-    public List<Car> findCarsByBrandWithQuery(@RequestParam String brand){
+    public List<Car> findCarsByBrandWithQuery(@RequestParam String brand) {
         return carManager.findCarsByBrandWithQuery(brand);
     }
 
@@ -128,6 +128,11 @@ public class CarApi {
         return carManager.countCarsByModel(model);
     }
 
+    @GetMapping("/amounts/models/query")
+    public Long countCarsByModelWithParamWithQuery(@RequestParam String model) {
+        return carManager.countCarsByModel(model);
+    }
+
     @GetMapping("/amounts/models/{model}")
     public Long countCarsByModel(@PathVariable("model") String model) {
         return carManager.countCarsByModel(model);
@@ -136,6 +141,11 @@ public class CarApi {
     @GetMapping("/amounts/age")
     public Long countCarsByAgeWithParam(@RequestParam Integer age) {
         return carManager.countCarsByAge(age);
+    }
+
+    @GetMapping("/amounts/age/query")
+    public Long countCarsByAgeWithParamWithQuery(@RequestParam Integer age) {
+        return carManager.countCarsByAgeWithQuery(age);
     }
 
     @GetMapping("/amounts/age/{age}")
@@ -158,6 +168,11 @@ public class CarApi {
         return carManager.isCarExistsByBrand(brand);
     }
 
+    @GetMapping("/exists/brands/query")
+    public Boolean isCarExistsByBrandWithParamWithQuery(@RequestParam String brand) {
+        return carManager.isCarExistsByBrandWithQuery(brand);
+    }
+
     @GetMapping("/exists/brands/{brand}")
     public Boolean isCarExistsByBrand(@PathVariable("brand") String brand) {
         return carManager.isCarExistsByBrand(brand);
@@ -168,14 +183,24 @@ public class CarApi {
         return carManager.isCarExistsByModel(model);
     }
 
+    @GetMapping("/exists/models/query")
+    public Boolean isCarExistsByModelWithParamWithQuery(@RequestParam String model) {
+        return carManager.isCarExistsByModelWithQuery(model);
+    }
+
     @GetMapping("/exists/models/{model}")
     public Boolean isCarExistsByModel(@PathVariable("model") String model) {
         return carManager.isCarExistsByModel(model);
     }
 
     @GetMapping("/exists/age")
-    public Boolean isCarExistsByAgeWithPara(@RequestParam Integer age) {
+    public Boolean isCarExistsByAgeWithParam(@RequestParam Integer age) {
         return carManager.isCarExistsByAge(age);
+    }
+
+    @GetMapping("/exists/age/query")
+    public Boolean isCarExistsByAgeWithParamWithQuery(@RequestParam Integer age) {
+        return carManager.isCarExistsByAgeWithQuery(age);
     }
 
     @GetMapping("/exists/age/{age}")

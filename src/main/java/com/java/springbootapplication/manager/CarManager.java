@@ -5,7 +5,6 @@ import com.java.springbootapplication.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -85,8 +84,16 @@ public class CarManager {
         return carRepository.countCarByModel(model);
     }
 
+    public Long countCarsByModelWithQuery(String model) {
+        return carRepository.countCarByModelWithQuery(model);
+    }
+
     public Long countCarsByAge(Integer age) {
         return carRepository.countCarByAge(age);
+    }
+
+    public Long countCarsByAgeWithQuery(Integer age) {
+        return carRepository.countCarByAgeWithQuery(age);
     }
 
     public Boolean isCarExistsById(Long id) {
@@ -97,12 +104,24 @@ public class CarManager {
         return carRepository.existsCarByBrand(brand);
     }
 
+    public Boolean isCarExistsByBrandWithQuery(String brand) {
+        return carRepository.existsCarByBrandWithQuery(brand);
+    }
+
     public Boolean isCarExistsByModel(String model) {
         return carRepository.existsCarByModel(model);
     }
 
+    public Boolean isCarExistsByModelWithQuery(String model) {
+        return carRepository.existsCarByModelWithQuery(model);
+    }
+
     public Boolean isCarExistsByAge(Integer age) {
         return carRepository.existsCarByAge(age);
+    }
+
+    public Boolean isCarExistsByAgeWithQuery(Integer age) {
+        return carRepository.existsCarByAgeWithQuery(age);
     }
 
     public Car saveCar(Car car) {
