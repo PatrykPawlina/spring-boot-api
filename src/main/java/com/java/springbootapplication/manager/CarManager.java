@@ -5,6 +5,9 @@ import com.java.springbootapplication.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,6 +65,16 @@ public class CarManager {
 
     public List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age) {
         return carRepository.findCarsByBrandOrModelOrAge(brand, model, age);
+    }
+
+    public Page<Car> findCarsByBrandOrModelOrAgeWithPagination(String brand, String model, Integer age, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return carRepository.findCarsByBrandOrModelOrAge(brand, model, age, pageable);
+    }
+
+    public Page<Car> findCarsByBrandOrModelOrAgeWithQueryAndPagination(String brand, String model, Integer age, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return carRepository.findCarsByBrandOrModelOrAgeWithQueryAndPagination(brand, model, age, pageable);
     }
 
     public List<Car> findCarsByBrandOrModelOrAgeWithQuery(String brand, String model, Integer age) {
@@ -138,6 +151,7 @@ public class CarManager {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDatabase() {
+
         saveCar(new Car(1L, "Nissan", "Juke", 1));
         saveCar(new Car(2L, "Mazda", "CX30", 3));
         saveCar(new Car(3L, "Toyota", "Yaris", 5));

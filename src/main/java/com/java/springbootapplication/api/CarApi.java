@@ -3,6 +3,7 @@ package com.java.springbootapplication.api;
 import com.java.springbootapplication.dao.entity.Car;
 import com.java.springbootapplication.manager.CarManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -96,10 +97,28 @@ public class CarApi {
         return carManager.findCarsByBrandOrModelOrAge(brand, model, age);
     }
 
+    @GetMapping("/params/pagination")
+    public Page<Car> findCardByBrandModelOrAgeWithPagination(@RequestParam(required = false) String brand,
+                                                             @RequestParam(required = false) String model,
+                                                             @RequestParam(required = false) Integer age,
+                                                             @RequestParam int pageNumber,
+                                                             @RequestParam int pageSize) {
+        return carManager.findCarsByBrandOrModelOrAgeWithPagination(brand, model, age, pageNumber, pageSize);
+    }
+
+    @GetMapping("/params/query/pagination")
+    public Page<Car> findCardByBrandModelOrAgeWithQueryAndPagination(@RequestParam(required = false) String brand,
+                                                                     @RequestParam(required = false) String model,
+                                                                     @RequestParam(required = false) Integer age,
+                                                                     @RequestParam int pageNumber,
+                                                                     @RequestParam int pageSize) {
+        return carManager.findCarsByBrandOrModelOrAgeWithQueryAndPagination(brand, model, age, pageNumber, pageSize);
+    }
+
     @GetMapping("/params/query")
     public List<Car> findCardByBrandModelOrAgeWithQuery(@RequestParam(required = false) String brand,
-                                               @RequestParam(required = false) String model,
-                                               @RequestParam(required = false) Integer age) {
+                                                        @RequestParam(required = false) String model,
+                                                        @RequestParam(required = false) Integer age) {
         return carManager.findCarsByBrandOrModelOrAgeWithQuery(brand, model, age);
     }
 

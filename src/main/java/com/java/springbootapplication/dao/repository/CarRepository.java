@@ -1,6 +1,8 @@
 package com.java.springbootapplication.dao.repository;
 
 import com.java.springbootapplication.dao.entity.Car;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -32,6 +34,11 @@ public interface CarRepository extends CrudRepository<Car, Long> {
     List<Car> findCarsByAgeWithQuery(Integer age);
 
     List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age);
+
+    Page<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age, Pageable pageable);
+
+    @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.age= :age")
+    Page<Car> findCarsByBrandOrModelOrAgeWithQueryAndPagination(String brand, String model, Integer age, Pageable pageable);
 
     @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.age= :age")
     List<Car> findCarsByBrandOrModelOrAgeWithQuery(String brand, String model, Integer age);
