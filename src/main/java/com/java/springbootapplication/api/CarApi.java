@@ -149,7 +149,7 @@ public class CarApi {
 
     @GetMapping("/amounts/models/query")
     public Long countCarsByModelWithParamWithQuery(@RequestParam String model) {
-        return carManager.countCarsByModel(model);
+        return carManager.countCarsByModelWithQuery(model);
     }
 
     @GetMapping("/amounts/models/{model}")
