@@ -146,33 +146,4 @@ public class CarManager {
     public void deleteAll() {
         carRepository.deleteAll();
     }
-
-//    @EventListener(ApplicationReadyEvent.class)
-//    public void fillDatabase() {
-//
-//        saveCar(new Car(1L, "Nissan", "Juke", 1));
-//        saveCar(new Car(2L, "Mazda", "CX30", 3));
-//        saveCar(new Car(3L, "Toyota", "Yaris", 5));
-//        saveCar(new Car(4L, "Suzuki", "Swift", 7));
-//        saveCar(new Car(5L, "Volvo", "XC90", 12));
-//        saveCar(new Car(6L, "BMW", "M3", 9));
-//        saveCar(new Car(7L, "Subaru", "Forester", 8));
-//        saveCar(new Car(8L, "Peugeot", "2008", 4));
-//        saveCar(new Car(9L, "Nissan", "GTR", 7));
-//        saveCar(new Car(10L, "Mazda", "6", 3));
-//        saveCar(new Car(11L, "Toyota", "Corolla", 5));
-//        saveCar(new Car(12L, "Renault", "Cactus", 7));
-//        saveCar(new Car(13L, "Volvo", "V40", 12));
-//        saveCar(new Car(14L, "BMW", "X5", 9));
-//        saveCar(new Car(15L, "Subaru", "Impreza", 9));
-//        saveCar(new Car(16L, "Peugeot", "508", 4));
-//        saveCar(new Car(17L, "Nissan", "Nismo", 1));
-//        saveCar(new Car(18L, "Honda", "Civic", 3));
-//        saveCar(new Car(19L, "Toyota", "CRV", 6));
-//        saveCar(new Car(20L, "Renault", "Clio Sport", 7));
-//        saveCar(new Car(21L, "Opel", "Astra", 12));
-//        saveCar(new Car(22L, "Seat", "Leon", 9));
-//        saveCar(new Car(23L, "Fiat", "Tipo", 6));
-//        saveCar(new Car(24L, "Peugeot", "308", 4));
-//    }
 }

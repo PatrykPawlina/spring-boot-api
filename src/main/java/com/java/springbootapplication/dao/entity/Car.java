@@ -17,8 +17,8 @@ public class Car {
     private String model;
     private Integer year;
 
-    public Car() {
-    }
+    @ManyToMany(mappedBy = "cars" )
+    private Set<User> users = new HashSet<>();
 
     public void setId(Long id) {
         this.id = id;
@@ -32,12 +32,12 @@ public class Car {
         this.model = model;
     }
 
-    public void setYearOfProduction(Integer year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override
@@ -47,20 +47,7 @@ public class Car {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
-                ", owner=" + owner +
+                ", users=" + users +
                 '}';
     }
-
-    @OneToOne(mappedBy = "car")
-    private Owner owner;
-
-
-    @ManyToMany
-    @JoinTable(name = "car_customer",
-            joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id"))
-    private Set<Customer> customers = new HashSet<>();
-
-    @ManyToMany(mappedBy = "cars")
-    private Set<Driver> drivers = new HashSet<>();
 }
