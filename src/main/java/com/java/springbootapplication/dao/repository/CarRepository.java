@@ -28,20 +28,20 @@ public interface CarRepository extends CrudRepository<Car, Long> {
     @Query("SELECT c FROM Car c WHERE c.model LIKE :model")
     List<Car> findCarsByModelWithQuery(String model);
 
-    List<Car> findCarsByAge(Integer age);
+    List<Car> findCarsByYear(Integer year);
 
-    @Query("SELECT c FROM Car c WHERE c.age BETWEEN 5 AND 10")
-    List<Car> findCarsByAgeWithQuery(Integer age);
+    @Query("SELECT c FROM Car c WHERE c.year BETWEEN 5 AND 10")
+    List<Car> findCarsByYearWithQuery(Integer year);
 
-    List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age);
+    List<Car> findCarsByBrandOrModelOrYear(String brand, String model, Integer year);
 
-    Page<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age, Pageable pageable);
+    Page<Car> findCarsByBrandOrModelOrYear(String brand, String model, Integer year, Pageable pageable);
 
-    @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.age= :age")
-    Page<Car> findCarsByBrandOrModelOrAgeWithQueryAndPagination(String brand, String model, Integer age, Pageable pageable);
+    @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.year= :year")
+    Page<Car> findCarsByBrandOrModelOrYearWithQueryAndPagination(String brand, String model, Integer year, Pageable pageable);
 
-    @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.age= :age")
-    List<Car> findCarsByBrandOrModelOrAgeWithQuery(String brand, String model, Integer age);
+    @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.year= :year")
+    List<Car> findCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year);
 
     Long countCarByBrand(String brand);
 
@@ -53,10 +53,10 @@ public interface CarRepository extends CrudRepository<Car, Long> {
     @Query("SELECT COUNT (c) FROM Car c WHERE c.model LIKE :model")
     Long countCarByModelWithQuery(String model);
 
-    Long countCarByAge(Integer age);
+    Long countCarByYear(Integer year);
 
-    @Query("SELECT COUNT (c) FROM Car c WHERE c.age= :age")
-    Long countCarByAgeWithQuery(Integer age);
+    @Query("SELECT COUNT (c) FROM Car c WHERE c.year= :year")
+    Long countCarByYearWithQuery(Integer year);
 
     Boolean existsCarByBrand(String brand);
 
@@ -68,8 +68,8 @@ public interface CarRepository extends CrudRepository<Car, Long> {
     @Query("SELECT CASE WHEN COUNT (c) > 0 THEN TRUE ELSE FALSE END FROM Car c WHERE c.model LIKE :model")
     Boolean existsCarByModelWithQuery(String model);
 
-    Boolean existsCarByAge(Integer age);
+    Boolean existsCarByYear(Integer year);
 
-    @Query("SELECT CASE WHEN COUNT (c) > 0 THEN TRUE ELSE FALSE END FROM Car c WHERE c.age= :age")
-    Boolean existsCarByAgeWithQuery(Integer age);
+    @Query("SELECT CASE WHEN COUNT (c) > 0 THEN TRUE ELSE FALSE END FROM Car c WHERE c.year= :year")
+    Boolean existsCarByYearWithQuery(Integer year);
 }

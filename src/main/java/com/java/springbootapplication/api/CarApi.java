@@ -75,51 +75,51 @@ public class CarApi {
         return carManager.findCarsByModelWithQuery(model);
     }
 
-    @GetMapping("/age")
-    public List<Car> findCarsByAgeWithParam(@RequestParam Integer age) {
-        return carManager.findCarsByAge(age);
+    @GetMapping("/year")
+    public List<Car> findCarsByYearWithParam(@RequestParam Integer year) {
+        return carManager.findCarsByYear(year);
     }
 
-    @GetMapping("/age/query")
-    public List<Car> findCarsByAgeWithParamWithQuery(Integer age) {
-        return carManager.findCarsByAgeWithQuery(age);
+    @GetMapping("/year/query")
+    public List<Car> findCarsByYearWithParamWithQuery(Integer year) {
+        return carManager.findCarsByYearWithQuery(year);
     }
 
-    @GetMapping("/age/{age}")
-    public List<Car> findCarsByAge(@PathVariable("age") Integer age) {
-        return carManager.findCarsByAge(age);
+    @GetMapping("/year/{year}")
+    public List<Car> findCarsByYear(@PathVariable("year") Integer year) {
+        return carManager.findCarsByYear(year);
     }
 
     @GetMapping("/params")
-    public List<Car> findCardByBrandModelOrAge(@RequestParam(required = false) String brand,
-                                               @RequestParam(required = false) String model,
-                                               @RequestParam(required = false) Integer age) {
-        return carManager.findCarsByBrandOrModelOrAge(brand, model, age);
+    public List<Car> findCardByBrandModelOrYear(@RequestParam(required = false) String brand,
+                                                @RequestParam(required = false) String model,
+                                                @RequestParam(required = false) Integer year) {
+        return carManager.findCarsByBrandOrModelOrYear(brand, model, year);
     }
 
     @GetMapping("/params/pagination")
-    public Page<Car> findCardByBrandModelOrAgeWithPagination(@RequestParam(required = false) String brand,
-                                                             @RequestParam(required = false) String model,
-                                                             @RequestParam(required = false) Integer age,
-                                                             @RequestParam int pageNumber,
-                                                             @RequestParam int pageSize) {
-        return carManager.findCarsByBrandOrModelOrAgeWithPagination(brand, model, age, pageNumber, pageSize);
+    public Page<Car> findCardByBrandModelOrYearWithPagination(@RequestParam(required = false) String brand,
+                                                              @RequestParam(required = false) String model,
+                                                              @RequestParam(required = false) Integer year,
+                                                              @RequestParam int pageNumber,
+                                                              @RequestParam int pageSize) {
+        return carManager.findCarsByBrandOrModelOrYearWithPagination(brand, model, year, pageNumber, pageSize);
     }
 
     @GetMapping("/params/query/pagination")
-    public Page<Car> findCardByBrandModelOrAgeWithQueryAndPagination(@RequestParam(required = false) String brand,
-                                                                     @RequestParam(required = false) String model,
-                                                                     @RequestParam(required = false) Integer age,
-                                                                     @RequestParam int pageNumber,
-                                                                     @RequestParam int pageSize) {
-        return carManager.findCarsByBrandOrModelOrAgeWithQueryAndPagination(brand, model, age, pageNumber, pageSize);
+    public Page<Car> findCardByBrandModelOrYearWithQueryAndPagination(@RequestParam(required = false) String brand,
+                                                                      @RequestParam(required = false) String model,
+                                                                      @RequestParam(required = false) Integer year,
+                                                                      @RequestParam int pageNumber,
+                                                                      @RequestParam int pageSize) {
+        return carManager.findCarsByBrandOrModelOrYearWithQueryAndPagination(brand, model, year, pageNumber, pageSize);
     }
 
     @GetMapping("/params/query")
-    public List<Car> findCardByBrandModelOrAgeWithQuery(@RequestParam(required = false) String brand,
-                                                        @RequestParam(required = false) String model,
-                                                        @RequestParam(required = false) Integer age) {
-        return carManager.findCarsByBrandOrModelOrAgeWithQuery(brand, model, age);
+    public List<Car> findCardByBrandModelOrYearWithQuery(@RequestParam(required = false) String brand,
+                                                         @RequestParam(required = false) String model,
+                                                         @RequestParam(required = false) Integer year) {
+        return carManager.findCarsByBrandOrModelOrYearWithQuery(brand, model, year);
     }
 
     @GetMapping("/amounts")
@@ -157,19 +157,19 @@ public class CarApi {
         return carManager.countCarsByModel(model);
     }
 
-    @GetMapping("/amounts/age")
-    public Long countCarsByAgeWithParam(@RequestParam Integer age) {
-        return carManager.countCarsByAge(age);
+    @GetMapping("/amounts/year")
+    public Long countCarsByYearWithParam(@RequestParam Integer year) {
+        return carManager.countCarsByYear(year);
     }
 
-    @GetMapping("/amounts/age/query")
-    public Long countCarsByAgeWithParamWithQuery(@RequestParam Integer age) {
-        return carManager.countCarsByAgeWithQuery(age);
+    @GetMapping("/amounts/year/query")
+    public Long countCarsByYearWithParamWithQuery(@RequestParam Integer year) {
+        return carManager.countCarsByYearWithQuery(year);
     }
 
-    @GetMapping("/amounts/age/{age}")
-    public Long countCarsByAge(@PathVariable("age") Integer age) {
-        return carManager.countCarsByAge(age);
+    @GetMapping("/amounts/year/{year}")
+    public Long countCarsByYear(@PathVariable("year") Integer year) {
+        return carManager.countCarsByYear(year);
     }
 
     @GetMapping("/exists")
@@ -212,19 +212,19 @@ public class CarApi {
         return carManager.isCarExistsByModel(model);
     }
 
-    @GetMapping("/exists/age")
-    public Boolean isCarExistsByAgeWithParam(@RequestParam Integer age) {
-        return carManager.isCarExistsByAge(age);
+    @GetMapping("/exists/year")
+    public Boolean isCarExistsByYearWithParam(@RequestParam Integer year) {
+        return carManager.isCarExistsByYear(year);
     }
 
-    @GetMapping("/exists/age/query")
-    public Boolean isCarExistsByAgeWithParamWithQuery(@RequestParam Integer age) {
-        return carManager.isCarExistsByAgeWithQuery(age);
+    @GetMapping("/exists/year/query")
+    public Boolean isCarExistsByYearWithParamWithQuery(@RequestParam Integer year) {
+        return carManager.isCarExistsByYearWithQuery(year);
     }
 
-    @GetMapping("/exists/age/{age}")
-    public Boolean isCarExistsByAge(@PathVariable("age") Integer age) {
-        return carManager.isCarExistsByAge(age);
+    @GetMapping("/exists/year/{year}")
+    public Boolean isCarExistsByYear(@PathVariable("year") Integer year) {
+        return carManager.isCarExistsByYear(year);
     }
 
     @PostMapping

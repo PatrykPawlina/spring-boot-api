@@ -3,8 +3,6 @@ package com.java.springbootapplication.manager;
 import com.java.springbootapplication.dao.entity.Car;
 import com.java.springbootapplication.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -55,30 +53,30 @@ public class CarManager {
         return carRepository.findCarsByModelWithQuery(model);
     }
 
-    public List<Car> findCarsByAge(Integer age) {
-        return carRepository.findCarsByAge(age);
+    public List<Car> findCarsByYear(Integer year) {
+        return carRepository.findCarsByYear(year);
     }
 
-    public List<Car> findCarsByAgeWithQuery(Integer age) {
-        return carRepository.findCarsByAgeWithQuery(age);
+    public List<Car> findCarsByYearWithQuery(Integer year) {
+        return carRepository.findCarsByYearWithQuery(year);
     }
 
-    public List<Car> findCarsByBrandOrModelOrAge(String brand, String model, Integer age) {
-        return carRepository.findCarsByBrandOrModelOrAge(brand, model, age);
+    public List<Car> findCarsByBrandOrModelOrYear(String brand, String model, Integer year) {
+        return carRepository.findCarsByBrandOrModelOrYear(brand, model, year);
     }
 
-    public Page<Car> findCarsByBrandOrModelOrAgeWithPagination(String brand, String model, Integer age, int pageNumber, int pageSize) {
+    public Page<Car> findCarsByBrandOrModelOrYearWithPagination(String brand, String model, Integer year, int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        return carRepository.findCarsByBrandOrModelOrAge(brand, model, age, pageable);
+        return carRepository.findCarsByBrandOrModelOrYear(brand, model, year, pageable);
     }
 
-    public Page<Car> findCarsByBrandOrModelOrAgeWithQueryAndPagination(String brand, String model, Integer age, int pageNumber, int pageSize) {
+    public Page<Car> findCarsByBrandOrModelOrYearWithQueryAndPagination(String brand, String model, Integer year, int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        return carRepository.findCarsByBrandOrModelOrAgeWithQueryAndPagination(brand, model, age, pageable);
+        return carRepository.findCarsByBrandOrModelOrYearWithQueryAndPagination(brand, model, year, pageable);
     }
 
-    public List<Car> findCarsByBrandOrModelOrAgeWithQuery(String brand, String model, Integer age) {
-        return carRepository.findCarsByBrandOrModelOrAgeWithQuery(brand, model, age);
+    public List<Car> findCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year) {
+        return carRepository.findCarsByBrandOrModelOrYearWithQuery(brand, model, year);
     }
 
     public Long countCars() {
@@ -101,12 +99,12 @@ public class CarManager {
         return carRepository.countCarByModelWithQuery(model);
     }
 
-    public Long countCarsByAge(Integer age) {
-        return carRepository.countCarByAge(age);
+    public Long countCarsByYear(Integer year) {
+        return carRepository.countCarByYear(year);
     }
 
-    public Long countCarsByAgeWithQuery(Integer age) {
-        return carRepository.countCarByAgeWithQuery(age);
+    public Long countCarsByYearWithQuery(Integer year) {
+        return carRepository.countCarByYearWithQuery(year);
     }
 
     public Boolean isCarExistsById(Long id) {
@@ -129,12 +127,12 @@ public class CarManager {
         return carRepository.existsCarByModelWithQuery(model);
     }
 
-    public Boolean isCarExistsByAge(Integer age) {
-        return carRepository.existsCarByAge(age);
+    public Boolean isCarExistsByYear(Integer year) {
+        return carRepository.existsCarByYear(year);
     }
 
-    public Boolean isCarExistsByAgeWithQuery(Integer age) {
-        return carRepository.existsCarByAgeWithQuery(age);
+    public Boolean isCarExistsByYearWithQuery(Integer year) {
+        return carRepository.existsCarByYearWithQuery(year);
     }
 
     public Car saveCar(Car car) {
@@ -149,16 +147,32 @@ public class CarManager {
         carRepository.deleteAll();
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDatabase() {
-
-        saveCar(new Car(1L, "Nissan", "Juke", 1));
-        saveCar(new Car(2L, "Mazda", "CX30", 3));
-        saveCar(new Car(3L, "Toyota", "Yaris", 5));
-        saveCar(new Car(4L, "Suzuki", "Swift", 7));
-        saveCar(new Car(5L, "Volvo", "XC90", 12));
-        saveCar(new Car(6L, "BMW", "M3", 9));
-        saveCar(new Car(7L, "Subaru", "Forester", 8));
-        saveCar(new Car(8L, "Peugeot", "2008", 4));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDatabase() {
+//
+//        saveCar(new Car(1L, "Nissan", "Juke", 1));
+//        saveCar(new Car(2L, "Mazda", "CX30", 3));
+//        saveCar(new Car(3L, "Toyota", "Yaris", 5));
+//        saveCar(new Car(4L, "Suzuki", "Swift", 7));
+//        saveCar(new Car(5L, "Volvo", "XC90", 12));
+//        saveCar(new Car(6L, "BMW", "M3", 9));
+//        saveCar(new Car(7L, "Subaru", "Forester", 8));
+//        saveCar(new Car(8L, "Peugeot", "2008", 4));
+//        saveCar(new Car(9L, "Nissan", "GTR", 7));
+//        saveCar(new Car(10L, "Mazda", "6", 3));
+//        saveCar(new Car(11L, "Toyota", "Corolla", 5));
+//        saveCar(new Car(12L, "Renault", "Cactus", 7));
+//        saveCar(new Car(13L, "Volvo", "V40", 12));
+//        saveCar(new Car(14L, "BMW", "X5", 9));
+//        saveCar(new Car(15L, "Subaru", "Impreza", 9));
+//        saveCar(new Car(16L, "Peugeot", "508", 4));
+//        saveCar(new Car(17L, "Nissan", "Nismo", 1));
+//        saveCar(new Car(18L, "Honda", "Civic", 3));
+//        saveCar(new Car(19L, "Toyota", "CRV", 6));
+//        saveCar(new Car(20L, "Renault", "Clio Sport", 7));
+//        saveCar(new Car(21L, "Opel", "Astra", 12));
+//        saveCar(new Car(22L, "Seat", "Leon", 9));
+//        saveCar(new Car(23L, "Fiat", "Tipo", 6));
+//        saveCar(new Car(24L, "Peugeot", "308", 4));
+//    }
 }

@@ -1,18 +1,13 @@
 package com.java.springbootapplication.dao.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 public class Car {
 
     @Id
@@ -20,5 +15,52 @@ public class Car {
     private Long id;
     private String brand;
     private String model;
-    private Integer age;
+    private Integer year;
+
+    public Car() {
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setYearOfProduction(Integer year) {
+        this.year = year;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", owner=" + owner +
+                '}';
+    }
+
+    @OneToOne(mappedBy = "car")
+    private Owner owner;
+
+
+    @ManyToMany
+    @JoinTable(name = "car_customer",
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
+    private Set<Customer> customers = new HashSet<>();
+
+    @ManyToMany(mappedBy = "cars")
+    private Set<Driver> drivers = new HashSet<>();
 }
