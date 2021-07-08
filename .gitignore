@@ -24,6 +24,8 @@
 *.iml
 *.properties
 *.sql
+*.png
+*.uml
 /mvnw
 /.mvn
 /.idea
