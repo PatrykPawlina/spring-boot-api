@@ -26,13 +26,13 @@ public class CarApi {
     }
 
     @GetMapping("/id")
-    public Optional<Car> getCarByIdWithParam(@RequestParam Long index) {
-        return carManager.findCarById(index);
+    public Optional<Car> getCarByIdWithParam(@RequestParam Long id) {
+        return carManager.findCarById(id);
     }
 
-    @GetMapping("/id/{index}")
-    public Optional<Car> getCarById(@PathVariable("index") Long index) {
-        return carManager.findCarById(index);
+    @GetMapping("/id/{id}")
+    public Optional<Car> getCarById(@PathVariable("id") Long id) {
+        return carManager.findCarById(id);
     }
 
     @GetMapping("/brands")
@@ -249,6 +249,6 @@ public class CarApi {
 
     @DeleteMapping("/clear")
     public void deleteCars() {
-        carManager.deleteAll();
+        carManager.deleteAllCars();
     }
 }

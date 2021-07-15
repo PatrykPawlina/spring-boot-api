@@ -3,10 +3,7 @@ package com.java.springbootapplication.api;
 import com.java.springbootapplication.dao.entity.User;
 import com.java.springbootapplication.manager.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -22,12 +19,22 @@ public class UserApi {
     }
 
     @GetMapping("/all")
-    public Iterable<User> findAll() {
+    public Iterable<User> findAllUsers() {
         return userManager.findAllUsers();
     }
 
-    @GetMapping("id")
-    public Optional<User> findAllUsersByIdWithParam(@RequestParam Long id) {
-        return userManager.findUsersById(id);
+    @GetMapping("/id")
+    public Optional<User> findAllUserByIdWithParam(@RequestParam Long id) {
+        return userManager.findUserById(id);
+    }
+
+    @GetMapping("/id/{id}")
+    public Optional<User> findAllUserById(@PathVariable("id") Long id) {
+        return userManager.findUserById(id);
+    }
+
+    @GetMapping("/amounts")
+    public Long countUsers() {
+        return userManager.countUsers();
     }
 }

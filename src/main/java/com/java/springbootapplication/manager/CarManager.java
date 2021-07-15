@@ -143,7 +143,7 @@ public class CarManager {
         carRepository.deleteById(id);
     }
 
-    public void deleteAll() {
+    public void deleteAllCars() {
         carRepository.deleteAll();
     }
 }

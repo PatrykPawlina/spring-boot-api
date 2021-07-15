@@ -19,8 +19,7 @@ public class User {
     private String lastName;
     private Integer age;
 
-    @OneToOne
-    @JoinColumn(name = "drivingLicense_id")
+    @OneToOne(mappedBy = "user")
     private DrivingLicense drivingLicense;
 
     @ManyToOne(cascade = CascadeType.ALL)
