@@ -1,5 +1,6 @@
 package com.java.springbootapplication.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.java.springbootapplication.dao.Gender;
 import lombok.Getter;
 
@@ -19,14 +20,17 @@ public class User {
     private String lastName;
     private Integer age;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private DrivingLicense drivingLicense;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_car",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))

@@ -1,6 +1,7 @@
 package com.java.springbootapplication.api;
 
 import com.java.springbootapplication.dao.entity.Car;
+import com.java.springbootapplication.dao.entity.User;
 import com.java.springbootapplication.manager.CarManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -120,6 +121,11 @@ public class CarApi {
                                                          @RequestParam(required = false) String model,
                                                          @RequestParam(required = false) Integer year) {
         return carManager.findCarsByBrandOrModelOrYearWithQuery(brand, model, year);
+    }
+
+    @GetMapping("/users")
+    public List<Car> findCarsWithUsers(User user) {
+        return carManager.findCarsWithUsers(user);
     }
 
     @GetMapping("/amounts")

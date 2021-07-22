@@ -1,6 +1,7 @@
 package com.java.springbootapplication.dao.repository;
 
 import com.java.springbootapplication.dao.entity.Car;
+import com.java.springbootapplication.dao.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -42,6 +43,9 @@ public interface CarRepository extends CrudRepository<Car, Long> {
 
     @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.year= :year")
     List<Car> findCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year);
+
+    @Query("SELECT c FROM Car c WHERE c.users IS NOT EMPTY")
+    List<Car> findCarsByUsers(User user);
 
     Long countCarByBrand(String brand);
 

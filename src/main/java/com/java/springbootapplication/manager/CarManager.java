@@ -1,6 +1,7 @@
 package com.java.springbootapplication.manager;
 
 import com.java.springbootapplication.dao.entity.Car;
+import com.java.springbootapplication.dao.entity.User;
 import com.java.springbootapplication.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -77,6 +78,10 @@ public class CarManager {
 
     public List<Car> findCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year) {
         return carRepository.findCarsByBrandOrModelOrYearWithQuery(brand, model, year);
+    }
+
+    public List<Car> findCarsWithUsers(User user) {
+        return carRepository.findCarsByUsers(user);
     }
 
     public Long countCars() {

@@ -14,7 +14,7 @@ public class DrivingLicense {
     private String numberDrivingLicense;
     private String drivingLicenseCategory;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
