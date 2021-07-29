@@ -1,19 +1,19 @@
-package com.java.springbootapplication.manager;
+package com.java.springbootapplication.service;
 
-import com.java.springbootapplication.dao.entity.User;
-import com.java.springbootapplication.dao.repository.UserRepository;
+import com.java.springbootapplication.entity.User;
+import com.java.springbootapplication.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserManager {
+public class UserService {
 
     private UserRepository userRepository;
 
     @Autowired
-    public UserManager(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

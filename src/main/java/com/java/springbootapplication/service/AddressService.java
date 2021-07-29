@@ -1,19 +1,19 @@
-package com.java.springbootapplication.manager;
+package com.java.springbootapplication.service;
 
-import com.java.springbootapplication.dao.entity.Address;
-import com.java.springbootapplication.dao.repository.AddressRepository;
+import com.java.springbootapplication.entity.Address;
+import com.java.springbootapplication.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class AddressManager {
+public class AddressService {
 
     private AddressRepository addressRepository;
 
     @Autowired
-    public AddressManager(AddressRepository addressRepository) {
+    public AddressService(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 

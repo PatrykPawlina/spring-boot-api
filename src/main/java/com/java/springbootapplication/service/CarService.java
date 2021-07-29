@@ -1,8 +1,8 @@
-package com.java.springbootapplication.manager;
+package com.java.springbootapplication.service;
 
-import com.java.springbootapplication.dao.entity.Car;
-import com.java.springbootapplication.dao.entity.User;
-import com.java.springbootapplication.dao.repository.CarRepository;
+import com.java.springbootapplication.entity.Car;
+import com.java.springbootapplication.entity.User;
+import com.java.springbootapplication.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CarManager {
+public class CarService {
 
     private CarRepository carRepository;
 
     @Autowired
-    public CarManager(CarRepository carRepository) {
+    public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 

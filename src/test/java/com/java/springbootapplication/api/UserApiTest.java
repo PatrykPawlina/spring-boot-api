@@ -2,8 +2,8 @@ package com.java.springbootapplication.api;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.java.springbootapplication.dao.entity.User;
-import com.java.springbootapplication.dao.repository.UserRepository;
+import com.java.springbootapplication.entity.User;
+import com.java.springbootapplication.repository.UserRepository;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

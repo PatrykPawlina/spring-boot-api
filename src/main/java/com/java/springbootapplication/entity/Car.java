@@ -1,4 +1,4 @@
-package com.java.springbootapplication.dao.entity;
+package com.java.springbootapplication.entity;
 
 import lombok.Getter;
 

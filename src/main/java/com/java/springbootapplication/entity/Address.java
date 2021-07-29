@@ -1,13 +1,10 @@
-package com.java.springbootapplication.dao.entity;
-
-import lombok.Getter;
+package com.java.springbootapplication.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter
 public class Address {
 
     @Id

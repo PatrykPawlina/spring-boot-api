@@ -1,6 +1,6 @@
-package com.java.springbootapplication.dao.repository;
+package com.java.springbootapplication.repository;
 
-import com.java.springbootapplication.dao.entity.Address;
+import com.java.springbootapplication.entity.Address;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

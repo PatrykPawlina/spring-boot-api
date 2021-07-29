@@ -1,7 +1,7 @@
-package com.java.springbootapplication.dao.repository;
+package com.java.springbootapplication.repository;
 
-import com.java.springbootapplication.dao.entity.Car;
-import com.java.springbootapplication.dao.entity.User;
+import com.java.springbootapplication.entity.Car;
+import com.java.springbootapplication.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

@@ -1,5 +1,5 @@
 package com.java.springbootapplication.dao;
 
-public enum Gender {
+public enum GenderDto {
     MALE, FEMALE
 }

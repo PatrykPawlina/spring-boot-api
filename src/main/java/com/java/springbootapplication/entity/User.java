@@ -1,7 +1,7 @@
-package com.java.springbootapplication.dao.entity;
+package com.java.springbootapplication.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.java.springbootapplication.dao.Gender;
+import com.java.springbootapplication.dao.GenderDto;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -15,7 +15,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Gender gender;
+    private GenderDto gender;
     private String firstName;
     private String lastName;
     private Integer age;
@@ -43,7 +43,7 @@ public class User {
         this.id = id;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(GenderDto gender) {
         this.gender = gender;
     }
 
