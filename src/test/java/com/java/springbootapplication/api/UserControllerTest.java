@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @AutoConfigureMockMvc
 @WithMockUser(username = "patryk", password = "admin")
-class UserApiTest {
+class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

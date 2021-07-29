@@ -1,4 +1,4 @@
-package com.java.springbootapplication.api;
+package com.java.springbootapplication.controller;
 
 import com.java.springbootapplication.entity.Address;
 import com.java.springbootapplication.service.AddressService;
@@ -9,12 +9,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/addresses")
-public class AddressApi {
+public class AddressController {
 
     private AddressService addressService;
 
     @Autowired
-    public AddressApi(AddressService addressService) {
+    public AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 

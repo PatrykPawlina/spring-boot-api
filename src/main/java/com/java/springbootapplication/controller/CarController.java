@@ -1,5 +1,6 @@
-package com.java.springbootapplication.api;
+package com.java.springbootapplication.controller;
 
+import com.java.springbootapplication.dao.CarDto;
 import com.java.springbootapplication.entity.Car;
 import com.java.springbootapplication.entity.User;
 import com.java.springbootapplication.service.CarService;
@@ -12,17 +13,17 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/cars")
-public class CarApi {
+public class CarController {
 
     private CarService carService;
 
     @Autowired
-    public CarApi(CarService carService) {
+    public CarController(CarService carService) {
         this.carService = carService;
     }
 
     @GetMapping("/all")
-    public Iterable<Car> getAllCars() {
+    public List<CarDto> getAllCars() {
         return carService.findAllCars();
     }
 

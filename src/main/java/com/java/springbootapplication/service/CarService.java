@@ -1,5 +1,6 @@
 package com.java.springbootapplication.service;
 
+import com.java.springbootapplication.dao.CarDto;
 import com.java.springbootapplication.entity.Car;
 import com.java.springbootapplication.entity.User;
 import com.java.springbootapplication.repository.CarRepository;
@@ -9,21 +10,26 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService {
 
     private CarRepository carRepository;
+    private ConverterService converterService;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, ConverterService converterService) {
         this.carRepository = carRepository;
+        this.converterService = converterService;
     }
 
-    public Iterable<Car> findAllCars() {
-        return carRepository.findAll();
+    public List<CarDto> findAllCars() {
+        List<Car> carDataList = carRepository.findAll();
+        return carDataList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
     public Optional<Car> findCarById(Long id) {

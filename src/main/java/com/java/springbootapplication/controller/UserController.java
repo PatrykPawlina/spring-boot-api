@@ -1,4 +1,4 @@
-package com.java.springbootapplication.api;
+package com.java.springbootapplication.controller;
 
 import com.java.springbootapplication.entity.User;
 import com.java.springbootapplication.service.UserService;
@@ -9,12 +9,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/users")
-public class UserApi {
+public class UserController {
 
     private UserService userService;
 
     @Autowired
-    public UserApi(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
