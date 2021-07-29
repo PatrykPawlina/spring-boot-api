@@ -1,6 +1,6 @@
 package com.java.springbootapplication.controller;
 
-import com.java.springbootapplication.dao.CarDto;
+import com.java.springbootapplication.dto.CarDto;
 import com.java.springbootapplication.entity.Car;
 import com.java.springbootapplication.entity.User;
 import com.java.springbootapplication.service.CarService;

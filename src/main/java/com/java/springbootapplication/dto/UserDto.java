@@ -1,4 +1,4 @@
-package com.java.springbootapplication.dao;
+package com.java.springbootapplication.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

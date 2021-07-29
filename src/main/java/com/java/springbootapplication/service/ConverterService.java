@@ -1,6 +1,6 @@
 package com.java.springbootapplication.service;
 
-import com.java.springbootapplication.dao.CarDto;
+import com.java.springbootapplication.dto.CarDto;
 import com.java.springbootapplication.entity.Car;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

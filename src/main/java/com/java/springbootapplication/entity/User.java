@@ -1,7 +1,7 @@
 package com.java.springbootapplication.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.java.springbootapplication.dao.GenderDto;
+import com.java.springbootapplication.dto.GenderDto;
 import lombok.Getter;
 
 import javax.persistence.*;

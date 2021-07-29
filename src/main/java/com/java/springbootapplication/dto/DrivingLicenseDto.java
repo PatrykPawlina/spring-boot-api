@@ -1,4 +1,4 @@
-package com.java.springbootapplication.dao;
+package com.java.springbootapplication.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
