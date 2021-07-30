@@ -13,17 +13,17 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    List<Car> findCarsByBrand(String brand);
-
     Car getCarById(Long id);
 
+    List<Car> getCarsByBrand(String brand);
+
     @Query("SELECT c FROM Car c WHERE c.brand LIKE '%ss%'")
-    List<Car> findCarsByBrandWithQueryLike(String brand);
+    List<Car> getCarsByBrandWithQueryLike(String brand);
 
     @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand")
-    List<Car> findCarsByBrandWithQuery(String brand);
+    List<Car> getCarsByBrandWithQuery(String brand);
 
-    List<Car> findCarsByModel(String model);
+    List<Car> getCarsByModel(String model);
 
     @Query("SELECT c FROM Car c WHERE c.model LIKE '%Yar%'")
     List<Car> findCarsByModelWithQueryLike(String model);

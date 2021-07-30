@@ -37,33 +37,33 @@ public class CarController {
     }
 
     @GetMapping("/brands")
-    public List<Car> findCarsByBrandWithParam(@RequestParam String brand) {
+    public List<CarDto> getCarsByBrandWithParam(@RequestParam String brand) {
         return carService.findCarsByBrand(brand);
     }
 
     @GetMapping("/brands/{brand}")
-    public List<Car> findCarsByBrand(@PathVariable("brand") String brand) {
+    public List<CarDto> findCarsByBrand(@PathVariable("brand") String brand) {
         return carService.findCarsByBrand(brand);
     }
 
     @GetMapping("/brands/query/like")
-    public List<Car> findCarsByBrandWithQueryLike(String brand) {
-        return carService.findCarsByBrandWithQueryLike(brand);
+    public List<CarDto> getCarsByBrandWithQueryLike(String brand) {
+        return carService.getCarsByBrandWithQueryLike(brand);
     }
 
     @GetMapping("/brands/query")
-    public List<Car> findCarsByBrandWithQuery(@RequestParam String brand) {
-        return carService.findCarsByBrandWithQuery(brand);
+    public List<CarDto> getCarsByBrandWithQuery(@RequestParam String brand) {
+        return carService.getCarsByBrandWithQuery(brand);
     }
 
     @GetMapping("/models")
-    public List<Car> findCarsByModelWithParam(@RequestParam String model) {
-        return carService.findCarsByModel(model);
+    public List<CarDto> getCarsByModelWithParam(@RequestParam String model) {
+        return carService.getCarsByModel(model);
     }
 
     @GetMapping("/models/{model}")
-    public List<Car> findCarsByModel(@PathVariable("model") String model) {
-        return carService.findCarsByModel(model);
+    public List<CarDto> findCarsByModel(@PathVariable("model") String model) {
+        return carService.getCarsByModel(model);
     }
 
     @GetMapping("/models/query/like")

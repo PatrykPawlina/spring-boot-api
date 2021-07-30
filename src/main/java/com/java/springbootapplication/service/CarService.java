@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,24 +31,29 @@ public class CarService {
     }
 
     public CarDto getCarById(Long id) {
-       Car carObject = carRepository.getCarById(id);
-       return converterService.convertToDto(carObject);
+        Car carObject = carRepository.getCarById(id);
+        return converterService.convertToDto(carObject);
     }
 
-    public List<Car> findCarsByBrand(String brand) {
-        return carRepository.findCarsByBrand(brand);
+    public List<CarDto> findCarsByBrand(String brand) {
+        List<Car> carObjectList = carRepository.getCarsByBrand(brand);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByBrandWithQueryLike(String brand) {
-        return carRepository.findCarsByBrandWithQueryLike(brand);
+    public List<CarDto> getCarsByBrandWithQueryLike(String brand) {
+        List<Car> carObjectList = carRepository.getCarsByBrandWithQueryLike(brand);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByBrandWithQuery(String brand) {
-        return carRepository.findCarsByBrandWithQuery(brand);
+    public List<CarDto> getCarsByBrandWithQuery(String brand) {
+        List<Car> carObjectList = carRepository.getCarsByBrandWithQuery(brand);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByModel(String model) {
-        return carRepository.findCarsByModel(model);
+    public List<CarDto> getCarsByModel(String model) {
+        List<Car> carObjectList = carRepository.getCarsByModel(model);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+
     }
 
     public List<Car> findCarsByModelWithQueryLike(String model) {
