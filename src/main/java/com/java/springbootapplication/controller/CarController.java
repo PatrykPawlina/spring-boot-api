@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/cars")
@@ -24,17 +23,17 @@ public class CarController {
 
     @GetMapping("/all")
     public List<CarDto> getAllCars() {
-        return carService.findAllCars();
+        return carService.getAllCars();
     }
 
     @GetMapping("/id")
-    public Optional<Car> getCarByIdWithParam(@RequestParam Long id) {
-        return carService.findCarById(id);
+    public CarDto getCarByIdWithParam(@RequestParam Long id) {
+        return carService.getCarById(id);
     }
 
     @GetMapping("/id/{id}")
-    public Optional<Car> getCarById(@PathVariable("id") Long id) {
-        return carService.findCarById(id);
+    public CarDto getCarById(@PathVariable("id") Long id) {
+        return carService.getCarById(id);
     }
 
     @GetMapping("/brands")

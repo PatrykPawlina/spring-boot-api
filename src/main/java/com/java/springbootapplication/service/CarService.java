@@ -26,13 +26,14 @@ public class CarService {
         this.converterService = converterService;
     }
 
-    public List<CarDto> findAllCars() {
+    public List<CarDto> getAllCars() {
         List<Car> carDataList = carRepository.findAll();
         return carDataList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public Optional<Car> findCarById(Long id) {
-        return carRepository.findById(id);
+    public CarDto getCarById(Long id) {
+       Car carObject = carRepository.getCarById(id);
+       return converterService.convertToDto(carObject);
     }
 
     public List<Car> findCarsByBrand(String brand) {

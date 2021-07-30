@@ -1,9 +1,9 @@
 package com.java.springbootapplication.dto;
 
-import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -15,7 +15,6 @@ public class CarDto {
     private String brand;
     private String model;
     private Integer year;
-    private Set<UserDto> users = new HashSet<>();
 
     @Override
     public String toString() {
@@ -24,7 +23,6 @@ public class CarDto {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
-                ", users=" + users +
                 '}';
     }
 }
