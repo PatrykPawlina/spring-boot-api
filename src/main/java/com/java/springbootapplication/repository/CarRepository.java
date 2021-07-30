@@ -26,17 +26,17 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> getCarsByModel(String model);
 
     @Query("SELECT c FROM Car c WHERE c.model LIKE '%Yar%'")
-    List<Car> findCarsByModelWithQueryLike(String model);
+    List<Car> getCarsByModelWithQueryLike(String model);
 
     @Query("SELECT c FROM Car c WHERE c.model LIKE :model")
-    List<Car> findCarsByModelWithQuery(String model);
+    List<Car> getCarsByModelWithQuery(String model);
 
-    List<Car> findCarsByYear(Integer year);
+    List<Car> getCarsByYear(Integer year);
 
-    @Query("SELECT c FROM Car c WHERE c.year BETWEEN 5 AND 10")
-    List<Car> findCarsByYearWithQuery(Integer year);
+    @Query("SELECT c FROM Car c WHERE c.year BETWEEN 2015 AND 2020")
+    List<Car> getCarsByYearWithQuery(Integer year);
 
-    List<Car> findCarsByBrandOrModelOrYear(String brand, String model, Integer year);
+    List<Car> getCarsByBrandOrModelOrYear(String brand, String model, Integer year);
 
     Page<Car> findCarsByBrandOrModelOrYear(String brand, String model, Integer year, Pageable pageable);
 
@@ -44,10 +44,10 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     Page<Car> findCarsByBrandOrModelOrYearWithQueryAndPagination(String brand, String model, Integer year, Pageable pageable);
 
     @Query("SELECT c FROM Car c WHERE c.brand LIKE :brand OR c.model LIKE :model OR c.year= :year")
-    List<Car> findCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year);
+    List<Car> getCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year);
 
     @Query("SELECT c FROM Car c WHERE c.users IS NOT EMPTY")
-    List<Car> findCarsByUsers(User user);
+    List<Car> getCarsByUsers(User user);
 
     Long countCarByBrand(String brand);
 

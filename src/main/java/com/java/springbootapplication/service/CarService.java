@@ -56,24 +56,29 @@ public class CarService {
 
     }
 
-    public List<Car> findCarsByModelWithQueryLike(String model) {
-        return carRepository.findCarsByModelWithQueryLike(model);
+    public List<CarDto> getCarsByModelWithQueryLike(String model) {
+        List<Car> carObjectList = carRepository.getCarsByModelWithQueryLike(model);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByModelWithQuery(String model) {
-        return carRepository.findCarsByModelWithQuery(model);
+    public List<CarDto> getCarsByModelWithQuery(String model) {
+        List<Car> carObjectList = carRepository.getCarsByModelWithQuery(model);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByYear(Integer year) {
-        return carRepository.findCarsByYear(year);
+    public List<CarDto> getCarsByYear(Integer year) {
+        List<Car> carObjectList = carRepository.getCarsByYear(year);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByYearWithQuery(Integer year) {
-        return carRepository.findCarsByYearWithQuery(year);
+    public List<CarDto> getCarsByYearWithQuery(Integer year) {
+        List<Car> carObjectList = carRepository.getCarsByYearWithQuery(year);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsByBrandOrModelOrYear(String brand, String model, Integer year) {
-        return carRepository.findCarsByBrandOrModelOrYear(brand, model, year);
+    public List<CarDto> getCarsByBrandOrModelOrYear(String brand, String model, Integer year) {
+        List<Car> carObjectList = carRepository.getCarsByBrandOrModelOrYear(brand, model, year);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
     public Page<Car> findCarsByBrandOrModelOrYearWithPagination(String brand, String model, Integer year, int pageNumber, int pageSize) {
@@ -86,12 +91,14 @@ public class CarService {
         return carRepository.findCarsByBrandOrModelOrYearWithQueryAndPagination(brand, model, year, pageable);
     }
 
-    public List<Car> findCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year) {
-        return carRepository.findCarsByBrandOrModelOrYearWithQuery(brand, model, year);
+    public List<CarDto> getCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year) {
+        List<Car> carObjectList = carRepository.getCarsByBrandOrModelOrYearWithQuery(brand, model, year);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
-    public List<Car> findCarsWithUsers(User user) {
-        return carRepository.findCarsByUsers(user);
+    public List<CarDto> getCarsWithUsers(User user) {
+        List<Car> carObjectList = carRepository.getCarsByUsers(user);
+        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
     }
 
     public Long countCars() {

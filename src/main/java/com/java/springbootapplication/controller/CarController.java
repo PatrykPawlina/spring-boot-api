@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/cars")
 public class CarController {
 
-    private CarService carService;
+    private final CarService carService;
 
     @Autowired
     public CarController(CarService carService) {
@@ -67,35 +67,35 @@ public class CarController {
     }
 
     @GetMapping("/models/query/like")
-    public List<Car> findCarsByModelWithQueryLike(String model) {
-        return carService.findCarsByModelWithQueryLike(model);
+    public List<CarDto> getCarsByModelWithQueryLike(String model) {
+        return carService.getCarsByModelWithQueryLike(model);
     }
 
     @GetMapping("/models/query")
-    public List<Car> findCarsByModelWithQuery(@RequestParam String model) {
-        return carService.findCarsByModelWithQuery(model);
+    public List<CarDto> getCarsByModelWithQuery(@RequestParam String model) {
+        return carService.getCarsByModelWithQuery(model);
     }
 
     @GetMapping("/year")
-    public List<Car> findCarsByYearWithParam(@RequestParam Integer year) {
-        return carService.findCarsByYear(year);
+    public List<CarDto> getCarsByYearWithParam(@RequestParam Integer year) {
+        return carService.getCarsByYear(year);
     }
 
     @GetMapping("/year/query")
-    public List<Car> findCarsByYearWithParamWithQuery(Integer year) {
-        return carService.findCarsByYearWithQuery(year);
+    public List<CarDto> getCarsByYearWithParamWithQuery(Integer year) {
+        return carService.getCarsByYearWithQuery(year);
     }
 
     @GetMapping("/year/{year}")
-    public List<Car> findCarsByYear(@PathVariable("year") Integer year) {
-        return carService.findCarsByYear(year);
+    public List<CarDto> getCarsByYear(@PathVariable("year") Integer year) {
+        return carService.getCarsByYear(year);
     }
 
     @GetMapping("/params")
-    public List<Car> findCardByBrandModelOrYear(@RequestParam(required = false) String brand,
-                                                @RequestParam(required = false) String model,
-                                                @RequestParam(required = false) Integer year) {
-        return carService.findCarsByBrandOrModelOrYear(brand, model, year);
+    public List<CarDto> getCardByBrandModelOrYear(@RequestParam(required = false) String brand,
+                                                  @RequestParam(required = false) String model,
+                                                  @RequestParam(required = false) Integer year) {
+        return carService.getCarsByBrandOrModelOrYear(brand, model, year);
     }
 
     @GetMapping("/params/pagination")
@@ -117,15 +117,15 @@ public class CarController {
     }
 
     @GetMapping("/params/query")
-    public List<Car> findCardByBrandModelOrYearWithQuery(@RequestParam(required = false) String brand,
-                                                         @RequestParam(required = false) String model,
-                                                         @RequestParam(required = false) Integer year) {
-        return carService.findCarsByBrandOrModelOrYearWithQuery(brand, model, year);
+    public List<CarDto> getCardByBrandModelOrYearWithQuery(@RequestParam(required = false) String brand,
+                                                           @RequestParam(required = false) String model,
+                                                           @RequestParam(required = false) Integer year) {
+        return carService.getCarsByBrandOrModelOrYearWithQuery(brand, model, year);
     }
 
     @GetMapping("/users")
-    public List<Car> findCarsWithUsers(User user) {
-        return carService.findCarsWithUsers(user);
+    public List<CarDto> getCarsWithUsers(User user) {
+        return carService.getCarsWithUsers(user);
     }
 
     @GetMapping("/amounts")
