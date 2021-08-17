@@ -36,6 +36,11 @@ public class CarController {
         return carService.getCarById(id);
     }
 
+    @GetMapping("/id/query/{id}")
+    public CarDto getCarByIdWithQuery(@PathVariable("id") Long id) {
+        return carService.getCarByIdWithQuery(id);
+    }
+
     @GetMapping("/brands")
     public List<CarDto> getCarsByBrandWithParam(@RequestParam String brand) {
         return carService.findCarsByBrand(brand);

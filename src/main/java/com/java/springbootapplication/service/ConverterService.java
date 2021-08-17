@@ -1,6 +1,8 @@
 package com.java.springbootapplication.service;
 
+import com.java.springbootapplication.dto.AddressDto;
 import com.java.springbootapplication.dto.CarDto;
+import com.java.springbootapplication.entity.Address;
 import com.java.springbootapplication.entity.Car;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,11 @@ public class ConverterService {
         this.modelMapper = modelMapper;
     }
 
-    public CarDto convertToDto(Car carObject) {
+    public CarDto convertCarToDto(Car carObject) {
         return modelMapper.map(carObject, CarDto.class);
+    }
+
+    public AddressDto convertAddressToDto(Address addressObject) {
+        return modelMapper.map(addressObject, AddressDto.class);
     }
 }

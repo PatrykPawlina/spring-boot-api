@@ -15,6 +15,9 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     Car getCarById(Long id);
 
+    @Query("SELECT c FROM Car c WHERE c.id LIKE :id")
+    Car getCarByIdWithQuery(Long id);
+
     List<Car> getCarsByBrand(String brand);
 
     @Query("SELECT c FROM Car c WHERE c.brand LIKE '%ss%'")

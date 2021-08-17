@@ -27,58 +27,63 @@ public class CarService {
 
     public List<CarDto> getAllCars() {
         List<Car> carDataList = carRepository.findAll();
-        return carDataList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carDataList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public CarDto getCarById(Long id) {
         Car carObject = carRepository.getCarById(id);
-        return converterService.convertToDto(carObject);
+        return converterService.convertCarToDto(carObject);
+    }
+
+    public CarDto getCarByIdWithQuery(Long id) {
+        Car carObject = carRepository.getCarByIdWithQuery(id);
+        return converterService.convertCarToDto(carObject);
     }
 
     public List<CarDto> findCarsByBrand(String brand) {
         List<Car> carObjectList = carRepository.getCarsByBrand(brand);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByBrandWithQueryLike(String brand) {
         List<Car> carObjectList = carRepository.getCarsByBrandWithQueryLike(brand);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByBrandWithQuery(String brand) {
         List<Car> carObjectList = carRepository.getCarsByBrandWithQuery(brand);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByModel(String model) {
         List<Car> carObjectList = carRepository.getCarsByModel(model);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
 
     }
 
     public List<CarDto> getCarsByModelWithQueryLike(String model) {
         List<Car> carObjectList = carRepository.getCarsByModelWithQueryLike(model);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByModelWithQuery(String model) {
         List<Car> carObjectList = carRepository.getCarsByModelWithQuery(model);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByYear(Integer year) {
         List<Car> carObjectList = carRepository.getCarsByYear(year);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByYearWithQuery(Integer year) {
         List<Car> carObjectList = carRepository.getCarsByYearWithQuery(year);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsByBrandOrModelOrYear(String brand, String model, Integer year) {
         List<Car> carObjectList = carRepository.getCarsByBrandOrModelOrYear(brand, model, year);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public Page<Car> findCarsByBrandOrModelOrYearWithPagination(String brand, String model, Integer year, int pageNumber, int pageSize) {
@@ -93,12 +98,12 @@ public class CarService {
 
     public List<CarDto> getCarsByBrandOrModelOrYearWithQuery(String brand, String model, Integer year) {
         List<Car> carObjectList = carRepository.getCarsByBrandOrModelOrYearWithQuery(brand, model, year);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public List<CarDto> getCarsWithUsers(User user) {
         List<Car> carObjectList = carRepository.getCarsByUsers(user);
-        return carObjectList.stream().map(converterService::convertToDto).collect(Collectors.toList());
+        return carObjectList.stream().map(converterService::convertCarToDto).collect(Collectors.toList());
     }
 
     public Long countCars() {

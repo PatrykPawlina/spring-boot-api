@@ -1,36 +1,47 @@
 package com.java.springbootapplication.service;
 
+import com.java.springbootapplication.dto.AddressDto;
 import com.java.springbootapplication.entity.Address;
 import com.java.springbootapplication.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AddressService {
 
     private AddressRepository addressRepository;
+    private ConverterService converterService;
 
     @Autowired
-    public AddressService(AddressRepository addressRepository) {
+    public AddressService(AddressRepository addressRepository, ConverterService converterService) {
         this.addressRepository = addressRepository;
+        this.converterService = converterService;
     }
 
-    public Iterable<Address> findAllAddresses() {
-        return addressRepository.findAll();
+    public List<AddressDto> getAllAddresses() {
+        List<Address> addressDataList = addressRepository.findAll();
+        return addressDataList.stream().map(converterService::convertAddressToDto).collect(Collectors.toList());
     }
 
-    public Optional<Address> findAddressById(Long id) {
-        return addressRepository.findById(id);
+    public AddressDto getAddressById(Long id) {
+        Address addressObject = addressRepository.getAddressById(id);
+        return converterService.convertAddressToDto(addressObject);
+    }
+
+    public AddressDto getAddressByIdWithQuery(Long id) {
+        Address addressObject = addressRepository.getAddressByIdWithQuery(id);
+        return converterService.convertAddressToDto(addressObject);
     }
 
     public Long countAddresses() {
         return addressRepository.count();
     }
 
-    public boolean isExistsAddressById(Long id) {
-        return addressRepository.existsById(id);
+    public Boolean isExistsAddressById(Long id) {
+        return addressRepository.existsAddressById(id);
     }
 
     public Address saveAddress(Address address) {
